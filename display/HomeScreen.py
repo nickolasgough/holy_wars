@@ -5,7 +5,7 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
 # Represents the beginning screen of the game.
-class HomeScreen:
+class Home:
     # Define and store the title text.
     __title_text = None
     __TITLE_SIZE = 100

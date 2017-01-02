@@ -48,10 +48,10 @@ class Choice:
         self.__IMAGE_COORDINATES = (self.__DIMENSIONS[0]+(image_dimensions[0]/2), self.__DIMENSIONS[1]+(image_dimensions[1]/2))
 
         # Initialize the name.
-        name = name[0].upper()+name[1:]
         self.__name = name
+        name = name[0].upper()+name[1:]
         font = pygame.font.Font(None, self.__FONT_SIZE)
-        self.__text = font.render(self.__name, True, BLACK)
+        self.__text = font.render(name, True, BLACK)
         rect = self.__text.get_rect()
         x = self.__DIMENSIONS[0]+(self.__DIMENSIONS[2]/2)-(rect[2]/2)
         y = self.__DIMENSIONS[1]+(self.__DIMENSIONS[3])-(rect[3]*3/2)
@@ -107,3 +107,7 @@ class Choice:
     # Retrieve the selection.
     def get_selection(self):
         return self.__selected
+
+    # Retrieve the name of the choice.
+    def get_name(self):
+        return self.__name
