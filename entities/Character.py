@@ -7,13 +7,13 @@ class Character:
     __abilities = []
 
     # Store the character's image.
-    __image = None
+    __images = []
 
     # Initialize the character,
-    def __init__(self, name, abilities, image):
+    def __init__(self, name, abilities, images):
         self.__name = name
         self.__abilities = abilities
-        self.__image = image
+        self.__images = images
 
     # Retrieve the character's name.
     def get_name(self):
