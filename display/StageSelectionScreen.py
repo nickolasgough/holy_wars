@@ -6,7 +6,7 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
 # Represents the player selection screen.
-class OpponentSelection:
+class StageSelection:
     # Store the width and height of the screen.
     __WIDTH = 0
     __HEIGHT = 0
@@ -36,7 +36,7 @@ class OpponentSelection:
         # Initialize the title text
         font = pygame.font.Font(None, self.__TITLE_SIZE)
         font.set_underline(True)
-        self.__title_text = font.render("Select Your Opponent", True, BLACK)
+        self.__title_text = font.render("Select Your Battleground", True, BLACK)
         rect = self.__title_text.get_rect()
         self.__TITLE_COORDINATES = ((width/2)-rect[2]/2, 25)
 
@@ -46,27 +46,25 @@ class OpponentSelection:
 
         # Initialize the dimensions and names of each choice.
         x, y = 0, 75
-        rect_width, rect_height = 200, 200
+        rect_width, rect_height = 300, 200
         names = {
-            0: "bahamut",
-            1: "ifrit",
-            2: "titan",
-            3: "death",
-            4: "ryuk",
-            5: "devil"
+            0: "mountain",
+            1: "desert",
+            2: "swamp",
+            3: "tower"
         }
 
         # Initialize the choices.
-        for n in range(0, 6):
+        for n in range(0, 4):
             # Determine the coordinates.
-            if (n == 0 or n == 3):
+            if (n == 0 or n == 2):
                 x = 0
-            if (n == 3):
+            if (n == 2):
                 y = y+rect_height
 
             # Determine the name.
             dimensions = (x, y, rect_width, rect_height)
-            image_dimensions = (100, 100)
+            image_dimensions = (200, 100)
             choice = self.create_choice(dimensions, image_dimensions, names[n])
             self.__choices.append(choice)
 
@@ -74,9 +72,9 @@ class OpponentSelection:
             x += rect_width
 
         # Initialize the button.
-        self.__BUTTON_DIMENSIONS = ((width/2)-(300/2), height-75, 300, 50)
+        self.__BUTTON_DIMENSIONS = ((width/2)-(185/2), height-75, 200, 50)
         font = pygame.font.Font(None, self.__BUTTON_SIZE)
-        self.__button_text = font.render("Select Battleground", True, BLACK)
+        self.__button_text = font.render("Begin Battle", True, BLACK)
         rect = self.__button_text.get_rect()
         self.__TEXT_COORDINATES = (self.__BUTTON_DIMENSIONS[0]+(self.__BUTTON_DIMENSIONS[2]/2)-(rect[2]/2), self.__BUTTON_DIMENSIONS[1]+(self.__BUTTON_DIMENSIONS[3]/2)-(rect[3]/2))
 
@@ -100,14 +98,8 @@ class OpponentSelection:
     def create_choice(self, dimensions, image_dimensions, name):
         # Load and scale the images.
         images = []
-        images.append(pygame.image.load("../images/"+name+"_front_0.png"))
-        images.append(pygame.image.load("../images/"+name+"_left_0.png"))
-        images.append(pygame.image.load("../images/"+name+"_back_0.png"))
-        images.append(pygame.image.load("../images/"+name+"_right_0.png"))
+        images.append(pygame.image.load("../images/"+name+".png"))
         images[0] = pygame.transform.scale(images[0], image_dimensions)
-        images[1] = pygame.transform.scale(images[1], image_dimensions)
-        images[2] = pygame.transform.scale(images[2], image_dimensions)
-        images[3] = pygame.transform.scale(images[3], image_dimensions)
 
         # Create and return the choice element.
         choice = GameChoice.Choice(dimensions, images, image_dimensions, name)
@@ -164,3 +156,4 @@ class OpponentSelection:
             return c.get_name()
         else:
             return None
+

@@ -45,7 +45,7 @@ class Choice:
         # Initialize the image.
         self.__images = images
         self.__IMAGE_DIMENSIONS = image_dimensions
-        self.__IMAGE_COORDINATES = (self.__DIMENSIONS[0]+(image_dimensions[0]/2), self.__DIMENSIONS[1]+(image_dimensions[1]/2))
+        self.__IMAGE_COORDINATES = (self.__DIMENSIONS[0]+(self.__DIMENSIONS[2]/2)-(image_dimensions[0]/2), self.__DIMENSIONS[1]+(self.__DIMENSIONS[3]/2)-(image_dimensions[1]/2))
 
         # Initialize the name.
         self.__name = name

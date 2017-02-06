@@ -3,6 +3,10 @@ class Character:
     # Store the character's name.
     __name = ""
 
+    # Store the characters health and ability points.
+    __health = 100
+    __ability = 100
+
     # Store the character's collection of abilities.
     __abilities = []
 
